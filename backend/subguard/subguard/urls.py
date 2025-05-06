@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import URLPattern, path, include
+from django.urls import URLPattern, include, path
 from drf_spectacular.views import (SpectacularAPIView, SpectacularRedocView,
                                    SpectacularSwaggerView)
 

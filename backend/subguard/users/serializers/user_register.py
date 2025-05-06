@@ -27,6 +27,6 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     @transaction.atomic
     def create(self, validated_data: dict) -> User:
         validated_data.pop("password_confirmation")
-        return super().create(validated_data)
+        return User.objects.create_user(**validated_data)
 
         
