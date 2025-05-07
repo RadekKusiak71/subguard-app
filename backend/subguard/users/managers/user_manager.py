@@ -1,4 +1,5 @@
-from typing import Any, TYPE_CHECKING, Dict
+from typing import TYPE_CHECKING, Any, Dict
+
 from django.contrib.auth.models import BaseUserManager
 
 if TYPE_CHECKING:

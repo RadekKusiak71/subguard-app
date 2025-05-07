@@ -2,7 +2,7 @@ from django.contrib.auth.password_validation import validate_password
 from django.db import transaction
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from users.models import User
+from users.models import User, UserVerfication
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):
@@ -27,6 +27,11 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     @transaction.atomic
     def create(self, validated_data: dict) -> User:
         validated_data.pop("password_confirmation")
-        return User.objects.create_user(**validated_data)
+        user: User = User.objects.create_user(**validated_data)
+        user_verification: UserVerfication =UserVerfication.objects.create(
+            user=user
+        )
+        user_verification.send_verification_email()
+        return user
 
         

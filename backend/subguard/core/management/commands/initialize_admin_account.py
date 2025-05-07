@@ -29,7 +29,8 @@ class Command(BaseCommand):
 
         User.objects.create_superuser(
             email=DJANGO_ADMIN_EMAIL,
-            password=DJANGO_ADMIN_PASSWORD
+            password=DJANGO_ADMIN_PASSWORD,
+            is_verified=True,
         )
 
         self.stdout.write(self.style.SUCCESS("Successfully initialize admin account."))

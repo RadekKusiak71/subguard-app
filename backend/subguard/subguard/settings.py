@@ -100,6 +100,7 @@ SIMPLE_JWT = {
     "BLACKLIST_AFTER_ROTATION": True,
     "ALGORITHM": os.environ.get("DJANGO_JWT_ALGORITHM"),
     "SIGNING_KEY": os.environ.get("DJANGO_JWT_SECRET_KEY"),
+    "TOKEN_OBTAIN_SERIALIZER": "users.serializers.CustomTokenObtainPairSerializer",
 }
 
 # User Model
@@ -178,6 +179,7 @@ USE_TZ = True
 
 # Email Service configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DJANGO_EMAIL_VERIFICATION_LINK = os.environ.get("DJANGO_EMAIL_VERIFICATION_LINK")
 
 if PRODUCTION == 1:
     EMAIL_HOST = 'smtp.gmail.com'

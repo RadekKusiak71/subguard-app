@@ -1,1 +1,2 @@
 from .user_register import UserRegisterCreateAPIView
+from .user_verification import ResendUserVerificationAPIView, VerifyUserAccountAPIView
